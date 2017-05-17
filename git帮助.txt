@@ -1,51 +1,47 @@
-<<<<<<< HEAD
 echo "# 8888888" >> README.md
-=======
-echo "# gitgit" >> README.md
->>>>>>> ac92847d4ce69d769ae336b5d7128db01d37bd1d
 git init
 git add README.md
 git commit -m "first commit"
 git remote add origin https://github.com/ShieldofZues/document.git
 git push -u origin master
-Git提供了一个命令git reflog用来记录你的每一次命令：
+Git�ṩ��һ������git reflog������¼���ÿһ�����
 
-新建本地分支：git branch 本地分支名
-切换至本地分支：git checkout 本地分支名
-查看所有分支：git branch -vv
-git log --pretty=oneline  查看历史记录版本  在Git中，用HEAD表示当前版本
-回退上一个版本
+�½����ط�֧��git branch ���ط�֧��
+�л������ط�֧��git checkout ���ط�֧��
+�鿴���з�֧��git branch -vv
+git log --pretty=oneline  �鿴��ʷ��¼�汾  ��Git�У���HEAD��ʾ��ǰ�汾
+������һ���汾
 $ git reset --hard HEAD^
-回退上上一个版本
+��������һ���汾
 $ git reset --hard HEAD^^
-回退100个版本
+����100���汾
 HEAD~100
-使用命令git reset --hard commit_id。
-用git diff HEAD -- readme.txt命令可以查看工作区和版本库里面最新版本的区别：
-命令gitcheckout -- readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销（注意有--）
-要查看远程库的信息，用git remote -v
+ʹ������git reset --hard commit_id��
+��git diff HEAD -- readme.txt������Բ鿴�������Ͱ汾���������°汾������
+����gitcheckout -- readme.txt��˼���ǣ���readme.txt�ļ��ڹ��������޸�ȫ��������ע����--��
+Ҫ�鿴Զ�̿����Ϣ����git remote -v
 
-Git鼓励大量使用分支：
-查看分支：git branch
-创建分支：git branch <name>
-切换分支：git checkout <name>
-创建+切换分支：git checkout -b <name>
-合并某分支到当前分支：git merge <name>
-删除分支：git branch -d <name>
+Git��������ʹ�÷�֧��
+�鿴��֧��git branch
+������֧��git branch <name>
+�л���֧��git checkout <name>
+����+�л���֧��git checkout -b <name>
+�ϲ�ĳ��֧����ǰ��֧��git merge <name>
+ɾ����֧��git branch -d <name>
 
-因此，多人协作的工作模式通常是这样：
-1.      首先，可以试图用git push origin branch-name推送自己的修改；
-2.      如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
-3.      如果合并有冲突，则解决冲突，并在本地提交；
-4.      没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！
-如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-nameorigin/branch-name。
-这就是多人协作的工作模式，一旦熟悉了，就非常简单。
+��ˣ�����Э���Ĺ���ģʽͨ����������
+1.      ���ȣ�������ͼ��git push origin branch-name�����Լ����޸ģ�
+2.      �������ʧ�ܣ�����ΪԶ�̷�֧����ı��ظ��£���Ҫ����git pull��ͼ�ϲ���
+3.      ����ϲ��г�ͻ��������ͻ�����ڱ����ύ��
+4.      û�г�ͻ���߽������ͻ������git push origin branch-name���;��ܳɹ���
+���git pull��ʾ��no tracking information������˵�����ط�֧��Զ�̷�֧�����ӹ�ϵû�д�����������git branch --set-upstream branch-nameorigin/branch-name��
+����Ƕ���Э���Ĺ���ģʽ��һ����Ϥ�ˣ��ͷǳ��򵥡�
 
-敲命令gittag <name>就可以打一个新标签：
+������gittag <name>�Ϳ��Դ�һ���±�ǩ��
 
-Git同样告诉我们，用命令git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区：
-git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。
+Gitͬ���������ǣ�������git reset HEAD file���԰��ݴ������޸ĳ�������unstage�������·Żع�������
+git reset����ȿ��Ի��˰汾��Ҳ���԰��ݴ������޸Ļ��˵���������
 
-场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
-场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。
-场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
+����1����������˹�����ĳ���ļ������ݣ���ֱ�Ӷ������������޸�ʱ��������git checkout -- file��
+����2�����㲻�������˹�����ĳ���ļ������ݣ������ӵ����ݴ���ʱ���붪���޸ģ�����������һ��������git reset HEAD file���ͻص��˳���1���ڶ���������1������
+����3���Ѿ��ύ�˲����ʵ��޸ĵ��汾��ʱ����Ҫ���������ύ���ο��汾����һ�ڣ�����ǰ����û�����͵�Զ�̿⡣
