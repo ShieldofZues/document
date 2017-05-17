@@ -1,3 +1,5 @@
+
+¿¿
 echo "# document" >> README.md
 git init
 git add README.md
